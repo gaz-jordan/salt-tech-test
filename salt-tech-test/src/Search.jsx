@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Box, TextField, Button, Stack, Typography } from '@mui/material';
+import { TextField, IconButton, Typography, FormGroup, Box } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 
 const Search = ({ fetchResults }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -10,20 +11,32 @@ const Search = ({ fetchResults }) => {
       noValidate
       autoComplete="off"
     >
-      <Typography variant="h1" gutterBottom>
+      <Typography variant="h1" sx={{ fontSize: '42px' }} align="center" gutterBottom>
         Product Search
       </Typography>
-      <Stack spacing={2} sx={{ width: 300 }}>
+      <FormGroup sx={{ my: 4}}>
         <TextField
           id="search-products"
           label="Search Products"
           variant="outlined"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
+          slotProps={{
+            input: {
+              endAdornment: (
+                <IconButton
+                  type="button"
+                  aria-label="search"
+                  onClick={() => fetchResults(searchTerm)}
+                >
+                  <SearchIcon style={{ fill: "blue" }} />
+                </IconButton>
+              ),
+            },
+          }}
         />
-        <Button variant="contained" onClick={() => fetchResults(searchTerm)}>Contained</Button>
-      </Stack>
 
+      </FormGroup>
     </Box>
   )
 }
