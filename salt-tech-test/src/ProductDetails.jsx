@@ -1,16 +1,15 @@
-import { Grid2, Typography, CircularProgress } from '@mui/material';
+import { Grid2, Typography, CircularProgress, Stack } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const ProductDetails = () => {
     const [product, setProduct] = useState({});
     const [loading, setLoading] = useState(false);
-    // const { product_description, product_photo, product_price, product_title } = product?.data?;
     const location = useLocation();
     const asin = location.state?.asin;
 
     useEffect(() => {
-        if (!asin) return; // Prevent API call if asin is missing
+        if (!asin) return; // Return early if asin is missing
 
         const fetchProduct = async () => {
             setLoading(true);
@@ -18,7 +17,7 @@ const ProductDetails = () => {
             const options = {
                 method: 'GET',
                 headers: {
-                    'x-rapidapi-key': '9a3d4d1d04msh393e451a694bca2p1bf124jsna315df03324d',
+                    'x-rapidapi-key': '25ef151c84mshd0865b1d8b921f2p1f12e4jsn82c782cbf1f6',
                     'x-rapidapi-host': 'real-time-amazon-data.p.rapidapi.com'
                 }
             };
@@ -43,7 +42,10 @@ const ProductDetails = () => {
     console.log('product: ', product);
 
     return loading ? (
-        <CircularProgress sx={{ margin: "auto" }} />
+        <Stack alignItems="center" sx={{ mt: '30%' }}>
+            <CircularProgress />
+        </Stack>
+
     ) : (
         <Grid2 container spacing={4} sx={{ p: 2 }}>
             <Grid2 item size={{ xs: 12, md: 6 }}>

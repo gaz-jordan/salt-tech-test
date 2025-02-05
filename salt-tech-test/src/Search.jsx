@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
 import { TextField, IconButton, Typography, FormGroup, Box } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import { useState } from 'react';
 
 const Search = ({ fetchResults }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -14,7 +14,7 @@ const Search = ({ fetchResults }) => {
       <Typography variant="h1" sx={{ fontSize: '42px' }} align="center" gutterBottom>
         Product Search
       </Typography>
-      <FormGroup sx={{ my: 4}}>
+      <FormGroup sx={{ my: 4, margin: "0 auto", maxWidth: "500px"}}>
         <TextField
           id="search-products"
           label="Search Products"
