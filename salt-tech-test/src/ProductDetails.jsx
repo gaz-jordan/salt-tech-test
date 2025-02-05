@@ -1,4 +1,4 @@
-import { Grid2, Typography, CircularProgress, Stack } from '@mui/material';
+import { Grid2, Typography, CircularProgress, Stack, List, ListItem } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -7,6 +7,16 @@ const ProductDetails = () => {
     const [loading, setLoading] = useState(false);
     const location = useLocation();
     const asin = location.state?.asin;
+
+    const decodeHtml = (html) => {
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        return doc.documentElement.textContent;
+    };
+    
+    <Typography variant="body2">
+        {decodeHtml(product?.product_details?.resolution || "No resolution available.")}
+    </Typography>
+    
 
     useEffect(() => {
         if (!asin) return; // Return early if asin is missing
@@ -17,7 +27,7 @@ const ProductDetails = () => {
             const options = {
                 method: 'GET',
                 headers: {
-                    'x-rapidapi-key': '25ef151c84mshd0865b1d8b921f2p1f12e4jsn82c782cbf1f6',
+                    'x-rapidapi-key': '8c328d52a1msh24c1ffbd7b9367ap1a8fefjsnb9669b8b112b',
                     'x-rapidapi-host': 'real-time-amazon-data.p.rapidapi.com'
                 }
             };
@@ -62,6 +72,16 @@ const ProductDetails = () => {
                 <Typography variant="body2" sx={{ mt: '6px' }}>
                     <strong>Description:</strong> {product?.data?.product_description || "No description available."}
                 </Typography>
+                <List>
+                    {product?.data?.product_details &&
+                        Object.entries(product.data.product_details).map(([key, value]) => (
+                            <ListItem key={key} disableGutters>
+                                <Typography variant="body2" sx={{ mt: '6px' }}>
+                                    <strong>{key}:</strong> {decodeHtml(value)}
+                                </Typography>
+                            </ListItem>
+                        ))}
+                </List>
             </Grid2>
         </Grid2>
     );

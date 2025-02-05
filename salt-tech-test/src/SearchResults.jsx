@@ -6,7 +6,7 @@ const SearchResults = ({ searchResults = {} }) => {
     const products = searchResults?.data?.products || [];
 
     return (
-        <Grid2 container spacing={2}>
+        <Grid2 container spacing={2} sx={{ mt: 2 }}>
             {products.length > 0 && (
                 products.map((product) => (
                     <ProductCard product={product} />

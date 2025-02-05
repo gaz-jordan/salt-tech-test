@@ -1,10 +1,7 @@
 import { TextField, IconButton, Typography, FormGroup, Box } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import { useState } from 'react';
 
-const Search = ({ fetchResults }) => {
-  const [searchTerm, setSearchTerm] = useState('');
-
+const Search = ({ fetchResults, setSearchTerm, searchTerm }) => {
   return (
     <Box
       component="form"
@@ -27,7 +24,7 @@ const Search = ({ fetchResults }) => {
                 <IconButton
                   type="button"
                   aria-label="search"
-                  onClick={() => fetchResults(searchTerm)}
+                  onClick={() => fetchResults()}
                 >
                   <SearchIcon style={{ fill: "blue" }} />
                 </IconButton>
