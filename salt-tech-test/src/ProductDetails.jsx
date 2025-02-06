@@ -28,7 +28,8 @@ const ProductDetails = () => {
             const options = {
                 method: 'GET',
                 headers: {
-                    // API key here
+                    'x-rapidapi-key': '8c328d52a1msh24c1ffbd7b9367ap1a8fefjsnb9669b8b112b',
+                    'x-rapidapi-host': 'real-time-amazon-data.p.rapidapi.com'
                 }
             };
             try {

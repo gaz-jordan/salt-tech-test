@@ -11,6 +11,7 @@ const Search = () => {
       component="form"
       noValidate
       autoComplete="off"
+      onSubmit={(e) => fetchResults(e)}
     >
       <Typography variant="h1" sx={{ fontSize: '42px' }} align="center" gutterBottom>
         Product Search
@@ -26,9 +27,8 @@ const Search = () => {
             input: {
               endAdornment: (
                 <IconButton
-                  type="button"
+                  type="submit"
                   aria-label="search"
-                  onClick={() => fetchResults()}
                 >
                   <SearchIcon style={{ fill: "blue" }} />
                 </IconButton>

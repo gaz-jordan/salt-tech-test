@@ -4,14 +4,14 @@ import { SearchContext } from './SearchContext';
 
 const Pagination = () => {
     const {fetchResults, setPage, page} = useContext(SearchContext);
-    const handlePreviousPage = () => {
+    const handlePreviousPage = (e) => {
         setPage(prevPage => prevPage - 1);
-        fetchResults();
+        fetchResults(e);
     }
 
-    const handleNextPage = () => {
+    const handleNextPage = (e) => {
         setPage(prevPage => prevPage + 1);
-        fetchResults();
+        fetchResults(e);
     }
 
     return (
@@ -25,7 +25,7 @@ const Pagination = () => {
                 <Button
                     variant="contained"
                     fullWidth
-                    onClick={() => handlePreviousPage()}
+                    onClick={(e) => handlePreviousPage(e)}
                     disabled={page === 1}
                 >
                     Previous
@@ -35,7 +35,7 @@ const Pagination = () => {
                 <Button
                     variant="contained"
                     fullWidth
-                    onClick={() => handleNextPage()}
+                    onClick={(e) => handleNextPage(e)}
                 >
                     Next
                 </Button>
