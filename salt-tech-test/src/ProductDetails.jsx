@@ -53,7 +53,7 @@ const ProductDetails = () => {
     console.log('product: ', product);
 
     return loading ? (
-        <Stack alignItems="center" sx={{ mt: '30%' }}>
+        <Stack alignItems="center" sx={{ mt: '20%' }}>
             <CircularProgress />
         </Stack>
 

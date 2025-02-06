@@ -9,8 +9,8 @@ export const SearchProvider = ({ children }) => {
     const [page, setPage] = useState(1);
 
     const fetchResults = async (e) => {
-        console.log('fired: ', e);
         e.preventDefault();
+        setSearchResults(null);
         setLoading(true);
         const url = `https://real-time-amazon-data.p.rapidapi.com/search?query=${searchTerm}&page=${page}&country=US&sort_by=RELEVANCE&product_condition=ALL&is_prime=false&deals_and_discounts=NONE`;
         const options = {

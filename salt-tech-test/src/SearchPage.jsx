@@ -17,7 +17,7 @@ const SearchPage = () => {
                 </>
             }
             {loading &&
-                <Stack alignItems="center" sx={{ mt: '30%' }}>
+                <Stack alignItems="center" sx={{ mt: '10%' }}>
                     <CircularProgress />
                 </Stack>
             }
