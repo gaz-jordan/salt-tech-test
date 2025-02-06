@@ -1,5 +1,5 @@
 # Set up
-1. npm install fromm the root folder in the project.
+1. npm install from the root folder in the project.
 2. Add API keys to the header of the API calls in SearchContext.js and ProductDetails.jsx
 3. npm run start
  
