@@ -1,7 +1,11 @@
 import { TextField, IconButton, Typography, FormGroup, Box } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import { useContext } from 'react';
+import { SearchContext } from './SearchContext';
 
-const Search = ({ fetchResults, setSearchTerm, searchTerm }) => {
+const Search = () => {
+  const { fetchResults, setSearchTerm, searchTerm } = useContext(SearchContext);
+
   return (
     <Box
       component="form"

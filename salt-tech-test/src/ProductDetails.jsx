@@ -1,6 +1,7 @@
-import { Grid2, Typography, CircularProgress, Stack, List, ListItem } from '@mui/material';
+import { Grid2, Typography, CircularProgress, Stack, List, ListItem, Button } from '@mui/material';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const ProductDetails = () => {
     const [product, setProduct] = useState({});
@@ -12,11 +13,11 @@ const ProductDetails = () => {
         const doc = new DOMParser().parseFromString(html, "text/html");
         return doc.documentElement.textContent;
     };
-    
+
     <Typography variant="body2">
         {decodeHtml(product?.product_details?.resolution || "No resolution available.")}
     </Typography>
-    
+
 
     useEffect(() => {
         if (!asin) return; // Return early if asin is missing
@@ -58,6 +59,11 @@ const ProductDetails = () => {
 
     ) : (
         <Grid2 container spacing={4} sx={{ p: 2 }}>
+            <Grid2 size={12}>
+                <Button component={Link} to="/" variant="outlined" startIcon={<KeyboardBackspaceIcon />}>
+                    Back to list
+                </Button>
+            </Grid2>
             <Grid2 item size={{ xs: 12, md: 6 }}>
                 <img
                     src={product?.data?.product_photo}

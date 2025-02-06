@@ -9,6 +9,7 @@ import './App.css';
 import SearchPage from './SearchPage';
 import ProductDetails from './ProductDetails';
 import MainLayout from './MainLayout';
+import { SearchProvider } from './SearchContext';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,7 +21,12 @@ const router = createBrowserRouter(
 );
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <SearchProvider>
+      <RouterProvider router={router} />
+    </SearchProvider>
+  )
+
 };
 
 export default App;

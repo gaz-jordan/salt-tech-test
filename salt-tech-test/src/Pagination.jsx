@@ -1,7 +1,9 @@
 import { Grid2, Button, Typography } from '@mui/material'
-import React from 'react'
+import React, { useContext } from 'react'
+import { SearchContext } from './SearchContext';
 
-const Pagination = ({ fetchResults, setPage, page }) => {
+const Pagination = () => {
+    const {fetchResults, setPage, page} = useContext(SearchContext);
     const handlePreviousPage = () => {
         setPage(prevPage => prevPage - 1);
         fetchResults();
